@@ -1,5 +1,5 @@
 {
-  "name": "react-chat",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.20",
+    "axios": "^1.6.1",
+    "firebase": "^8.7.1",
+    "prop-type": "^0.0.1",
+    "prop-types": "^15.8.1",
+    "query-string": "^8.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-chat-engine": "^1.11.28",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0",
+    "sass": "^1.65.1",
+    "styled-components": "^6.0.7",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
