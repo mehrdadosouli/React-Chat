@@ -1,7 +1,7 @@
-import React,{useEffect,useState,useContext} from 'react';
+import React,{useEffect,useContext} from 'react';
+import { ChatEngine } from 'react-chat-engine';
 import { useNavigate } from 'react-router-dom';
 import { auth } from './firebase.js';
-import { ChatEngine } from 'react-chat-engine';
 import { AuthContext } from '../contexts/AuthContextProvider.jsx'
 import axios from 'axios';
 
@@ -18,9 +18,9 @@ const Chats = () => {
         if(!user){ history('/')
         return;
         }
-        axios.get('https://api.chatengine.io/users/me',{
+        axios.get("https://api.chatengine.io/users/me",{
             headers:{
-                'project-id':'bd9df0ce-091a-4c98-a9a1-da91ec367fa3',
+                'project-id':'e10759d8-a6ba-4de0-b958-ace1c57a312d',
                 'user-name':user.email,
                 'user-secret':user.uid
             }
@@ -35,10 +35,11 @@ const Chats = () => {
             formdata.append('secret',user.uid)
             getFile(user.photoURL)
             .then(avatar=>{
+                console.log(avatar);
                 formdata.append('avatar',avatar,avatar.name)
-                axios.post('https://api.chatengine.io/users/',formdata,{
+                axios.post("https://api.chatengine.io/users",formdata,{
                     headers:{
-                        'private-key':'1569c70a-b195-4e18-9657-36f7c33aa0b2'
+                        'private-key':'fe389bf4-0fbd-44e6-a6a2-6500a7dd4c59'
                     }
                 }) 
                 .then(()=>setLoading(false))
@@ -59,7 +60,7 @@ const Chats = () => {
             <h2>chats</h2>
             <h3 onClick={LogOut}>LogOut</h3>
             <div>
-                <ChatEngine height='100vh' projectId='' userName='.' userSecret='.' />
+                <ChatEngine height='100vh' projectID='e10759d8-a6ba-4de0-b958-ace1c57a312d' userName='.' userSecret='.' />
             </div>
         </div>
     );
