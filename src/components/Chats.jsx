@@ -1,4 +1,4 @@
-import React,{useEffect,useContext} from 'react';
+import React,{useEffect,useContext, useState} from 'react';
 import { ChatEngine } from 'react-chat-engine';
 import { useNavigate } from 'react-router-dom';
 import { auth } from './firebase.js';
@@ -8,7 +8,7 @@ import axios from 'axios';
 const Chats = () => {
     const user=useContext(AuthContext)
     const history=useNavigate()
-    const [loading,setLoading]=[true]
+    const [loading,setLoading]=useState(true)
 
     const LogOut=async()=>{
         await auth.signOut()
@@ -18,6 +18,8 @@ const Chats = () => {
         if(!user){ history('/')
         return;
         }
+        console.log("user.email", user.email);
+        console.log("user.uid", user.uid);
         axios.get("https://api.chatengine.io/users/me",{
             headers:{
                 'project-id':'e10759d8-a6ba-4de0-b958-ace1c57a312d',
@@ -28,7 +30,8 @@ const Chats = () => {
         .then(()=>{
             setLoading(false)
         })
-        .catch(()=>{
+        .catch((e)=>{
+            console.log("hereeee", e);
             let formdata=new FormData()
             formdata.append('email',user.email)
             formdata.append('username',user.email)
@@ -60,7 +63,7 @@ const Chats = () => {
             <h2>chats</h2>
             <h3 onClick={LogOut}>LogOut</h3>
             <div>
-                <ChatEngine height='100vh' projectID='e10759d8-a6ba-4de0-b958-ace1c57a312d' userName='.' userSecret='.' />
+                <ChatEngine height='100vh' projectID='e10759d8-a6ba-4de0-b958-ace1c57a312d' userName={user.email} userSecret={user.uid} />
             </div>
         </div>
     );
