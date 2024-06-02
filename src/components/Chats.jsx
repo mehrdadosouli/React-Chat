@@ -42,7 +42,7 @@ const Chats = () => {
                 formdata.append('avatar',avatar,avatar.name)
                 axios.post("https://api.chatengine.io/users",formdata,{
                     headers:{
-                        'private-key':'fe389bf4-0fbd-44e6-a6a2-6500a7dd4c59'
+                        'private-key':'90bc0c27-cc15-48dd-9e65-6f8126b9229b'
                     }
                 }) 
                 .then(()=>setLoading(false))
@@ -63,7 +63,7 @@ const Chats = () => {
             <h2>chats</h2>
             <h3 onClick={LogOut}>LogOut</h3>
             <div>
-                <ChatEngine height='100vh' projectID='e10759d8-a6ba-4de0-b958-ace1c57a312d' userName={user.email} userSecret={user.uid} />
+                <ChatEngine height='100vh' projectID='bf6d0299-4448-468f-ad69-8f23bf394356' userName={user.email} userSecret={user.uid} />
             </div>
         </div>
     );
